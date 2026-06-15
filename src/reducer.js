@@ -52,7 +52,7 @@ const reducer = (state, action) => {
         if (item._id === action.id) {
           return {
             ...item,
-            qty: action.payload,
+            qty: Number(action.payload),
             total: item.availablePrices[theIndeces] * action.payload,
           };
         }
@@ -98,6 +98,27 @@ const reducer = (state, action) => {
       return { ...state, acquiItems: action.payload };
     case "RECEIPTS":
       return { ...state, receipts: action.payload };
+    case "USAGERECEIPTS":
+      return { ...state, usageReceipts: action.payload };
+    case "SUCCESS":
+      return { ...state, success: action.payload };
+
+    case "INVENTMEASURE":
+      const newArray2 = state.acquiItems.map((item) => {
+        if (item._id === action.id) {
+          const currentIndex = action.payload;
+
+          return {
+            ...item,
+            unitMeasure: item.availableUnitMeasures[currentIndex],
+            qty: item.availableQuantities[currentIndex],
+          };
+        }
+        return item;
+      });
+      return { ...state, acquiItems: newArray2 };
+    case "LOCALACQUI":
+      return { ...state, localAcqui: action.payload };
     default:
       throw new Error();
   }

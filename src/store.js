@@ -1,3 +1,5 @@
+import UsageReceipts from "./components/UsageReceipt";
+
 const initialState = {
   name: "",
   firstPrice: 0,
@@ -16,6 +18,9 @@ const initialState = {
   search2: "",
   acquiItems: [],
   receipts: [],
+  UsageReceipts: [],
+  success: false,
+  localAcqui: [],
 };
 
 export default initialState;

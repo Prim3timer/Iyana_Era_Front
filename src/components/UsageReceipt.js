@@ -1,33 +1,38 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useReducer, useState } from "react";
 import ItemContext from "../context/itemProvider";
 import { format } from "date-fns";
 // import { FaTrashAlt, FaPlus } from "react-icons/fa";
 import { FaTrashAlt } from "react-icons/fa";
 import axios from "../app/api/axios";
+import initailState from "../store";
+import reducer from "../reducer";
 
 const UsageReceipts = () => {
-  const { getReceipts, receipts, currency, numberWithCommas } =
-    useContext(ItemContext);
-  const [usageRecipt, setUsageRecipt] = useState([]);
-  console.log(receipts);
-
-  const getUsage = async () => {
-    const response = await axios.get("/used");
+  const {
+    getReceipts,
+    receipts,
+    currency,
+    numberWithCommas,
+    getUsage,
+    usageReceipts,
+    success,
+  } = useContext(ItemContext);
+  const [state, dispatch] = useReducer(reducer, initailState);
+  const removeItem = async (id) => {
+    const response = await axios.delete(`/used/${id}`);
+    dispatch({ type: "ALERTMSG", payload: response.data });
     console.log(response.data);
-    setUsageRecipt(response.data);
   };
+
   useEffect(() => {
     getUsage();
-  }, []);
-
-  const removeItem = async () => {
-    console.log("removed");
-  };
+  }, [usageReceipts?.length]);
 
   return (
     <div>
       <h3>Usage Receipts</h3>
-      {usageRecipt.map((receipt) => {
+      <h3>{success && state.alertmsg}</h3>
+      {usageReceipts?.map((receipt) => {
         const theDay = format(receipt.date, "dd/MM/yyyy");
         return (
           <div className="receipt-main-cont">

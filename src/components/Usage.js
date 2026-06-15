@@ -9,15 +9,16 @@ const Usage = () => {
     receipts,
     getReceipts,
     numberWithCommas,
-    items,
+    acquiItems,
     getItems,
     used,
     getUsed,
+    currency,
   } = useContext(ItemContext);
   const [transactionArray, setTransactionArray] = useState([]);
   const [state, dispatch] = useReducer(reducer, initialState);
   const [same, setSame] = useState(false);
-  console.log(state.acquiItems);
+  console.log(acquiItems);
 
   const getTrans = async () => {
     const response = await axios.get("/used");
@@ -59,32 +60,31 @@ const Usage = () => {
 
   const firstUnit = () => {
     try {
-      console.log(items);
+      console.log(acquiItems);
       console.log(transactionArray);
       const firstElement = transactionArray[0];
       console.log(firstElement);
-      const currentItem = transactionArray.find(
-        (item) => item.name === firstElement.name,
-      );
-      // const currentItems =
+      const currentItem =
+        acquiItems &&
+        acquiItems.find((item) => item.name === firstElement.name);
       console.log(currentItem);
-      // const unitMeasureMeasureArray = [];
 
       const currentArray = transactionArray.filter(
-        (item) => item.unitMeasure === currentItem?.availableUnitMeasures[0],
+        (item) => item.unitMeasure === currentItem.availableUnitMeasures[0],
       );
       setTransactionArray(currentArray);
     } catch (error) {
       console.error(error.message);
-    } 
+    }
   };
 
   const secondUnit = () => {
     try {
-      console.log(items);
+      console.log(acquiItems);
       const firstElement = transactionArray[0];
       const currentItem =
-        items && items.find((item) => item.name === firstElement.name);
+        acquiItems &&
+        acquiItems.find((item) => item.name === firstElement.name);
       console.log(currentItem);
       // const unitMeasureMeasureArray = [];
 
@@ -167,7 +167,9 @@ const Usage = () => {
                     {transaction.qty} {transaction.unitMeasure}
                     {transaction.qty > 1 ? "s" : ""}
                   </td>
-                  <th>{parseFloat(transaction.total).toFixed(2)}</th>
+                  <th>
+                    {numberWithCommas(parseFloat(transaction.total).toFixed(2))}
+                  </th>
                   <td>
                     {" "}
                     {new Date(transaction.date).toLocaleString("en-US", {
@@ -195,7 +197,7 @@ const Usage = () => {
                 )}
             </th>
             <th colSpan={2}>
-              $
+              {currency}
               {numberWithCommas(
                 transactionArray
                   .reduce((a, b) => {

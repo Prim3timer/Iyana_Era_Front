@@ -10,7 +10,7 @@ const Invoice = () => {
   const { getReceipts, currency, numberWithCommas, receipts } =
     useContext(ItemContext);
   const [state, dispatch] = useReducer(reducer, initialState);
-
+  console.log(receipts);
   const removeItem = async (id) => {
     console.log(id);
     const filterate = state.receipts.filter((receipt) => receipt._id !== id);
@@ -21,7 +21,7 @@ const Invoice = () => {
 
   useEffect(() => {
     getReceipts();
-  }, [receipts]);
+  }, []);
 
   return (
     <div>

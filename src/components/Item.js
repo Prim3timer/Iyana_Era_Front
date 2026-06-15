@@ -34,7 +34,7 @@ const Item = () => {
             <Link to={"/edit-item"}>
               <p>{item.availablePrices[0]}</p>
               <h5>{item.name}</h5>
-              <p>qty: {item.qty}</p>
+              <p>qty: {item.availableQuantities[0]}</p>
               <p>
                 {" "}
                 created:{" "}

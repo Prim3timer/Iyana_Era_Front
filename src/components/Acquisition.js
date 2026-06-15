@@ -44,7 +44,6 @@ const Acquisition = () => {
 
   const handleAdd = (e, i) => {
     e.preventDefault();
-
     try {
       if (inputRef.current.value) {
         if (state.success === false) state.success = true;
@@ -118,16 +117,18 @@ const Acquisition = () => {
   const doneSales = async () => {
     try {
       const { transArray, total } = state;
+      console.log(transArray);
       if (state.transArray.length) {
         const transItems = {
           paidAmount: state.paidAmount,
           goods: transArray,
           grandTotal: total,
           numerator,
+          measureIndex,
           date: now,
         };
-        console.log(transItems);
         const response = await axios.post("/acquisition", transItems);
+        console.log(response.data);
       }
     } catch (error) {}
   };
