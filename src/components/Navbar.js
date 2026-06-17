@@ -4,20 +4,14 @@ import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const location = useLocation();
-  const underlineCheck = (location, state) => {
-    const linkCover = document.getElementsByClassName("link-cover");
-    console.log(location);
-    console.log(state);
-  };
   return (
     <div>
       <article className="navbar">
-        <Link
-          className={"link-cover"}
-          to={"/acquisition"}
-          onClick={(location, state) => underlineCheck(location, state)}
-        >
+        <Link className={"link-cover"} to={"/acquisition"}>
           acquisition
+        </Link>
+        <Link to={"/purchases"} className="link-cover">
+          purchases
         </Link>
         <Link to={"/items"} className={"link-cover"}>
           items
@@ -40,8 +34,8 @@ const Navbar = () => {
         <Link to={"/used"} className={"link-cover"}>
           used
         </Link>
-        <Link to={"/usage-receipt"} className={"link-cover"}>
-          usage receipt
+        <Link to={"/usage-data"} className={"link-cover"}>
+          usage data
         </Link>
       </article>
     </div>

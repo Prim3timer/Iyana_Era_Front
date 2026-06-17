@@ -1,58 +1,45 @@
 import { useContext, useEffect, useReducer, useState } from "react";
-import ItemContext from "../context/itemProvider";
+import axios from "../app/api/axios";
 import reducer from "../reducer";
 import initialState from "../store";
-import axios from "../app/api/axios";
+import ItemContext from "../context/itemProvider";
 
-const Usage = () => {
-  const {
-    receipts,
-    getReceipts,
-    numberWithCommas,
-    acquiItems,
-    getItems,
-    used,
-    getUsed,
-    currency,
-  } = useContext(ItemContext);
-  const [transactionArray, setTransactionArray] = useState([]);
-  const [state, dispatch] = useReducer(reducer, initialState);
+const Purchases = () => {
+  const [purchases, setPurchases] = useState([]);
   const [same, setSame] = useState(false);
-  console.log(acquiItems);
-
-  const getTrans = async () => {
-    const response = await axios.get("/used");
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const { numberWithCommas, acquiItems, currency } = useContext(ItemContext);
+  const getAcquisitions = async () => {
+    const response = await axios.get("/acquisition");
     console.log(response.data);
-
     try {
       let innerArray = [];
-      receipts &&
-        response.data.map((transaction) => {
-          return transaction.goods.map((good) => {
-            const elements = {
-              name: good.name,
-              qty: good.qty,
-              unitMeasure: good.unitMeasure,
-              total: good.total,
-              date: transaction.date,
-            };
-            innerArray.push(elements);
-            const filterate =
-              innerArray &&
-              innerArray.filter((inner) =>
-                inner.name.toLowerCase().includes(state.search.toLowerCase()),
-              );
-            const filterate2 = filterate.filter((inner) =>
-              inner.date.substring(0, 10).includes(state.search2),
+      response.data.map((purchase) => {
+        return purchase.goods.map((good) => {
+          const elements = {
+            name: good.name,
+            qty: good.qty,
+            unitMeasure: good.unitMeasure,
+            total: good.total,
+            date: purchase.date,
+          };
+          innerArray.push(elements);
+          const filterate =
+            innerArray &&
+            innerArray.filter((inner) =>
+              inner.name.toLowerCase().includes(state.search.toLowerCase()),
             );
-            setTransactionArray(filterate2);
-            const allEqual = (arr) =>
-              arr.every((val) => val.name === arr[0].name);
-            const allTheSame = allEqual(filterate2);
-            setSame(allTheSame);
-            return innerArray;
-          });
+          const filterate2 = filterate.filter((inner) =>
+            inner.date.substring(0, 10).includes(state.search2),
+          );
+          setPurchases(filterate2);
+          const allEqual = (arr) =>
+            arr.every((val) => val.name === arr[0].name);
+          const allTheSame = allEqual(filterate2);
+          setSame(allTheSame);
+          return innerArray;
         });
+      });
     } catch (error) {
       console.log(error.message);
     }
@@ -61,18 +48,18 @@ const Usage = () => {
   const firstUnit = () => {
     try {
       console.log(acquiItems);
-      console.log(transactionArray);
-      const firstElement = transactionArray[0];
+      console.log(purchases);
+      const firstElement = purchases[0];
       console.log(firstElement);
       const currentItem =
         acquiItems &&
         acquiItems.find((item) => item.name === firstElement.name);
       console.log(currentItem);
       // get all the items with the first unitMeasure
-      const currentArray = transactionArray.filter(
+      const currentArray = purchases.filter(
         (item) => item.unitMeasure === currentItem.availableUnitMeasures[0],
       );
-      setTransactionArray(currentArray);
+      setPurchases(currentArray);
     } catch (error) {
       console.error(error.message);
     }
@@ -81,41 +68,33 @@ const Usage = () => {
   const secondUnit = () => {
     try {
       console.log(acquiItems);
-      const firstElement = transactionArray[0];
+      const firstElement = purchases[0];
       const currentItem =
         acquiItems &&
         acquiItems.find((item) => item.name === firstElement.name);
       console.log(currentItem);
       // get all the items with the second unitMeasure
-      const currentArray = transactionArray.filter(
+      const currentArray = purchases.filter(
         (item) => item.unitMeasure === currentItem.availableUnitMeasures[1],
       );
-      setTransactionArray(currentArray);
+      setPurchases(currentArray);
     } catch (error) {
       console.error(error.message);
     }
   };
 
   useEffect(() => {
-    getReceipts();
-  }, []);
-
-  useEffect(() => {
-    getItems();
-  }, []);
-
-  useEffect(() => {
-    getTrans();
+    getAcquisitions();
   }, [state.search, state.search2]);
   return (
     <div className="usage">
+      <h3>Purchases</h3>
       {same && (
         <article className="sales-button">
           <button onClick={firstUnit}>unit 1</button>
           <button onClick={secondUnit}>unit 2</button>
         </article>
       )}
-      <h3>Usage</h3>
       <form className="searcher" onSubmit={(e) => e.preventDefault()}>
         <input
           // id="invent-search"
@@ -151,14 +130,15 @@ const Usage = () => {
             <th className="gen-sales-theader">TOTAL</th>
             <th className="gen-sales-theader">DATE</th>
           </tr>
-          {transactionArray &&
-            transactionArray.map((transaction, index) => {
+          {purchases &&
+            purchases.map((transaction, index) => {
               return (
                 <tr
                   className="sales-items-cont"
                   key={index}
                   style={{
-                    backgroundColor: index % 2 === 0 ? "white" : "khaki",
+                    backgroundColor:
+                      index % 2 === 0 ? "white" : "paleturquoise",
                   }}
                 >
                   <th>{transaction.name}</th>
@@ -188,7 +168,7 @@ const Usage = () => {
             <th>
               {same &&
                 numberWithCommas(
-                  transactionArray
+                  purchases
                     .reduce((a, b) => {
                       return a + parseFloat(b.qty);
                     }, 0)
@@ -198,7 +178,7 @@ const Usage = () => {
             <th colSpan={2}>
               {currency}
               {numberWithCommas(
-                transactionArray
+                purchases
                   .reduce((a, b) => {
                     return a + parseFloat(b.total);
                   }, 0)
@@ -212,4 +192,4 @@ const Usage = () => {
   );
 };
 
-export default Usage;
+export default Purchases;

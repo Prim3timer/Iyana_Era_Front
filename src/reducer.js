@@ -52,7 +52,7 @@ const reducer = (state, action) => {
         if (item._id === action.id) {
           return {
             ...item,
-            qty: Number(action.payload),
+            qty: action.payload,
             total: item.availablePrices[theIndeces] * action.payload,
           };
         }
@@ -119,6 +119,10 @@ const reducer = (state, action) => {
       return { ...state, acquiItems: newArray2 };
     case "LOCALACQUI":
       return { ...state, localAcqui: action.payload };
+    case "VERIFY":
+      return { ...state, verify: action.payload };
+    case "ITEM":
+      return { ...state, item: action.payload };
     default:
       throw new Error();
   }

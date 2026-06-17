@@ -9,19 +9,22 @@ import initialState from "../store";
 const Invoice = () => {
   const { getReceipts, currency, numberWithCommas, receipts } =
     useContext(ItemContext);
-  const [state, dispatch] = useReducer(reducer, initialState);
   console.log(receipts);
+  const [state, dispatch] = useReducer(reducer, initialState);
   const removeItem = async (id) => {
-    console.log(id);
-    const filterate = state.receipts.filter((receipt) => receipt._id !== id);
-    const response = await axios.delete(`/acquisition/${id}`);
-    console.log(response.data);
-    // [filterate, receipts];
+    try {
+      const filterate = state.receipts.filter((receipt) => receipt._id !== id);
+      const response = await axios.delete(`/acquisition/${id}`);
+      dispatch({ type: "RECEIPTS", payload: filterate });
+      // [filterate, receipts];
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
     getReceipts();
-  }, []);
+  }, [receipts.length]);
 
   return (
     <div>
@@ -37,6 +40,7 @@ const Invoice = () => {
             <article className="items-header">
               <h4>item</h4>
               <h4>qty</h4>
+              <h4>desc</h4>
               <h4>cost</h4>
             </article>
             <hr />
@@ -46,9 +50,10 @@ const Invoice = () => {
                   <div className="goods-container" key={good._id}>
                     <p className="good-name"> {good.name}</p>
                     <p className="good-measure">
-                      {good.qty}
-                      {good.unitMeasure}
+                      {good.qty} {good.unitMeasure}
+                      {good.qty > 1 ? "s" : ""}
                     </p>
+                    <p>{good.description}</p>
                     <p>
                       {currency}
                       {numberWithCommas(parseFloat(good.total).toFixed(2))}

@@ -128,7 +128,7 @@ const Acquisition = () => {
           date: now,
         };
         const response = await axios.post("/acquisition", transItems);
-        console.log(response.data);
+        console.log(transItems);
       }
     } catch (error) {}
   };
@@ -138,7 +138,7 @@ const Acquisition = () => {
   }, [state.transArray, success]);
 
   return (
-    <div>
+    <div className="acquisition-cont">
       <h3>acquisition</h3>
       {state.errMsg}
       {!state.transArray.length ? (
@@ -148,13 +148,7 @@ const Acquisition = () => {
           //  console.log(item.unitMeasure)
 
           return (
-            <section
-              key={index}
-              className="trans-item"
-              // style={{
-              //   backgroundColor: index % 2 === 0 ? "white" : "skyblue",
-              // }}
-            >
+            <section key={index} className="trans-item">
               <section className="trans-name-and-img">
                 {/* <img
                     className="trans-img"
@@ -203,7 +197,20 @@ const Acquisition = () => {
 
                 {/* </section>  */}
               </article>
-
+              <label className="desc-header">description: </label>
+              <br />
+              <textarea
+                maxLength={500}
+                className="description"
+                value={item.description}
+                onChange={(e) =>
+                  dispatch({
+                    type: "DESCRIPTION",
+                    payload: e.target.value,
+                    id: item._id,
+                  })
+                }
+              ></textarea>
               <article>
                 <h4
                 // style={{
@@ -265,10 +272,10 @@ const Acquisition = () => {
         //   columnGap: "1rem",
         // }}
       >
-        <h2 id="grand-total-one">
+        <h3 id="grand-total-one">
           Total: {currency}
           {numberWithCommas(parseFloat(state.total).toFixed(2))}
-        </h2>
+        </h3>
 
         <section
           style={{
@@ -277,7 +284,9 @@ const Acquisition = () => {
           }}
         ></section>
         <article className="cash-confirm">
-          <button onClick={doneSales}>Acquire</button>
+          <button className="acquire" onClick={doneSales}>
+            Acquire
+          </button>
         </article>
       </section>
     </div>

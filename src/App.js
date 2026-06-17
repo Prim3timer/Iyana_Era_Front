@@ -9,12 +9,13 @@ import Invoice from "./components/Invoice";
 import Acquisition from "./components/Acquisition";
 import Usage from "./components/Usage";
 import Used from "./components/Used";
-import UsageReceipt from "./components/UsageReceipt";
+import UsageData from "./components/UsageData";
+import Purchases from "./components/Purchases";
 function App() {
   return (
     <main className="App">
       <Navbar />
-      <div>
+      <div className="grower">
         <Routes>
           <Route path="/">
             <Route path="/" index element={<Item />} />
@@ -26,10 +27,12 @@ function App() {
             <Route path="acquisition" element={<Acquisition />} />
             <Route path="usage" element={<Usage />} />
             <Route path="used" element={<Used />} />
-            <Route path="/usage-receipt" element={<UsageReceipt />} />
+            <Route path="/usage-data" element={<UsageData />} />
+            <Route path="/purchases" element={<Purchases />} />
           </Route>
         </Routes>
       </div>
+      <section className="footer">Amalu Productions</section>
     </main>
   );
 }

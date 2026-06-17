@@ -73,7 +73,7 @@ const Inventory = () => {
           role="searchbox"
           value={state.search2}
           onChange={(e) =>
-            dispatch({ type: "search2", payload: e.target.value })
+            dispatch({ type: "SEARCH2", payload: e.target.value })
           }
         />
       </form>
@@ -82,7 +82,7 @@ const Inventory = () => {
           <tr className="invent-header-trow">
             <th>Name</th>
             <th>In-Stock</th>
-            <th> unit measure</th>
+            <th> Unit Measure</th>
             <th> Last Udated</th>
             {/* <th>ACTION</th> */}
           </tr>

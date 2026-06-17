@@ -94,7 +94,7 @@ const Used = () => {
           date: now,
         };
         const response = await axios.post("/used", transItems);
-        console.log(response.data);
+        console.log(transItems);
       }
     } catch (error) {
       console.log(error.message);
@@ -118,7 +118,7 @@ const Used = () => {
     }, 3000);
   };
   return (
-    <div>
+    <div className="acquisition-cont">
       <h3>Used</h3>
       {state.errMsg}
       {!state.transArray.length ? (
@@ -130,7 +130,8 @@ const Used = () => {
           return (
             <section
               key={index}
-              className="trans-item"
+              className="trans-items"
+
               // style={{
               //   backgroundColor: index % 2 === 0 ? "white" : "skyblue",
               // }}
@@ -184,9 +185,11 @@ const Used = () => {
 
                 {/* </section>  */}
               </article>
-              <label>description: </label>
+              <label className="desc-header">description: </label>
+              <br />
               <textarea
                 maxLength={500}
+                className="description"
                 value={item.description}
                 onChange={(e) =>
                   dispatch({

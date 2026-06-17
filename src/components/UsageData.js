@@ -7,7 +7,7 @@ import axios from "../app/api/axios";
 import initailState from "../store";
 import reducer from "../reducer";
 
-const UsageReceipts = () => {
+const UsageData = () => {
   const {
     getReceipts,
     receipts,
@@ -30,7 +30,7 @@ const UsageReceipts = () => {
 
   return (
     <div>
-      <h3>Usage Receipts</h3>
+      <h3>Usage Data</h3>
       <h3>{success && state.alertmsg}</h3>
       {usageReceipts?.map((receipt) => {
         const theDay = format(receipt.date, "dd/MM/yyyy");
@@ -78,4 +78,4 @@ const UsageReceipts = () => {
   );
 };
 
-export default UsageReceipts;
+export default UsageData;
