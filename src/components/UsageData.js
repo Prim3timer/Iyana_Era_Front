@@ -67,9 +67,9 @@ const UsageData = () => {
             </section>
             <hr className="horizontal" />
             <section className="total-elements">
-              <h2 onClick={() => removeItem(receipt._id)}>
+              {/* <h2 onClick={() => removeItem(receipt._id)}>
                 <FaTrashAlt role="button" />
-              </h2>
+              </h2> */}
             </section>
           </div>
         );

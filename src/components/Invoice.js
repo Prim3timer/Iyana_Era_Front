@@ -69,9 +69,9 @@ const Invoice = () => {
                 {currency}
                 {numberWithCommas(parseFloat(receipt.grandTotal).toFixed(2))}
               </h4>
-              <h2 onClick={() => removeItem(receipt._id)}>
+              {/* <h2 onClick={() => removeItem(receipt._id)}>
                 <FaTrashAlt role="button" />
-              </h2>
+              </h2> */}
             </section>
           </div>
         );
