@@ -163,7 +163,7 @@ const Purchases = () => {
               );
             })}
           <tr className="trow">
-            <th>Total:</th>
+            <th>Grand Total:</th>
             <th>
               {same &&
                 numberWithCommas(

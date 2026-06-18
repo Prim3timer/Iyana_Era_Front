@@ -64,7 +64,7 @@ const Invoice = () => {
             </section>
             <hr className="horizontal" />
             <section className="total-elements">
-              <h4 className="receipts-grand-total">Grand Total:</h4>{" "}
+              <h4 className="receipts-grand-total">Total Cost:</h4>{" "}
               <h4>
                 {currency}
                 {numberWithCommas(parseFloat(receipt.grandTotal).toFixed(2))}

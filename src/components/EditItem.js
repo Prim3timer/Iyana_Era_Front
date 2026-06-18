@@ -13,7 +13,7 @@ const EditItem = () => {
   const iyaId = localStorage.getItem("iyaId");
   const navigate = useNavigate();
   const getItems = async (e) => {
-    const response = await axios.get("http://localhost:4000/items");
+    const response = await axios.get("/items");
     const currentItem = response.data.find((item) => item._id === iyaId);
     console.log(currentItem);
     if (currentItem) {
@@ -73,10 +73,7 @@ const EditItem = () => {
       date: now,
     };
 
-    const response = await axios.patch(
-      `http://localhost:4000/items/${iyaId}`,
-      newItem,
-    );
+    const response = await axios.patch(`/items/${iyaId}`, newItem);
     console.log(response.data);
   };
 

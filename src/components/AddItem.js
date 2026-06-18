@@ -1,5 +1,5 @@
 import { useReducer, useState } from "react";
-import axios from "axios";
+import axios from "../app/api/axios";
 import initialState from "../store";
 import reducer from "../reducer";
 const AddItem = () => {
@@ -30,7 +30,7 @@ const AddItem = () => {
     };
     console.log(newItem);
     try {
-      const response = await axios.post("http://localhost:4000/items", newItem);
+      const response = await axios.post("/items", newItem);
       console.log(response.data);
     } catch (error) {
       console.error(error);

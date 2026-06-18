@@ -334,6 +334,7 @@ button {
 
 .trow >* {
   border-top: 2px solid brown;
+  font-size: 1.5rem;
 }
 
 
