@@ -7,7 +7,7 @@ import axios from "../app/api/axios";
 
 const Inventory = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { numbersWithCommas } = useContext(ItemContext);
+  const { numberWithCommas } = useContext(ItemContext);
   const [indexer, setIndexer] = useState(0);
   const getItems = async () => {
     try {
