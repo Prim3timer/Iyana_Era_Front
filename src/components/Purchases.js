@@ -142,7 +142,8 @@ const Purchases = () => {
                 >
                   <th>{transaction.name}</th>
                   <td>
-                    {transaction.qty} {transaction.unitMeasure}
+                    {numberWithCommas(transaction.qty)}{" "}
+                    {transaction.unitMeasure}
                     {transaction.qty > 1 ? "s" : ""}
                   </td>
                   <th>

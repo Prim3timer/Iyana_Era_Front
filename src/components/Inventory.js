@@ -7,7 +7,7 @@ import axios from "../app/api/axios";
 
 const Inventory = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const {} = useContext(ItemContext);
+  const { numbersWithCommas } = useContext(ItemContext);
   const [indexer, setIndexer] = useState(0);
   const getItems = async () => {
     try {
@@ -109,7 +109,7 @@ const Inventory = () => {
                     //   color: inv?.availableQuanities[0] < 20 ? "red" : "",
                     // }}
                   >
-                    {parseFloat(inv.qty).toFixed(2)}{" "}
+                    {numbersWithCommas(parseFloat(inv.qty).toFixed(2))}{" "}
                   </th>
                   <td>
                     <select
