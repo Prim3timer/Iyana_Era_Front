@@ -82,7 +82,7 @@ const Inventory = () => {
             <th>Name</th>
             <th>In-Stock</th>
             <th> Unit Measure</th>
-            <th> Last Udated</th>
+            <th> Last Updated</th>
             {/* <th>ACTION</th> */}
           </tr>
           {state.acquiItems &&
