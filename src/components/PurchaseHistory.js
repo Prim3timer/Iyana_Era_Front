@@ -62,7 +62,7 @@ const PurchaseHistory = () => {
         return (
           <div className="receipt-main-cont" key={receipt._id}>
             <section className="date-and-id">
-              <p>{receipt._id}</p>
+              {/* <p>{receipt._id}</p> */}
               <p>{theDay}</p>
             </section>
             <article className="items-header">
