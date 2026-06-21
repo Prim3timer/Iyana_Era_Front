@@ -8,7 +8,7 @@ import reducer from "../reducer";
 import initialState from "../store";
 
 const Item = () => {
-  const {} = useContext(ItemContext);
+  const { numberWithCommas } = useContext(ItemContext);
   const [state, dispatch] = useReducer(reducer, initialState);
   const getId = (id) => {
     localStorage.setItem("iyaId", id);
@@ -60,7 +60,7 @@ const Item = () => {
             <div key={i} onClick={() => getId(item._id)} className="items">
               <Link to={"/edit-item"}>
                 <h3>{item.name}</h3>
-                <p>Price: {item.availablePrices[0]}</p>
+                <p>Price: {numberWithCommas(item.availablePrices[0])}</p>
                 <p>
                   qty: {item.availableQuantities[0]}{" "}
                   {item.availableUnitMeasures[0]}
