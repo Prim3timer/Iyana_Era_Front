@@ -52,7 +52,7 @@ const PurchaseHistory = () => {
 
   useEffect(() => {
     getReceipts();
-  }, [receipts.length]);
+  }, [removeItem]);
 
   return (
     <div>
