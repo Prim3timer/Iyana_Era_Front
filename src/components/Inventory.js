@@ -48,7 +48,7 @@ const Inventory = () => {
     <div className="inventory">
       <h3 className="header"> Inventory</h3>
       <form
-        className="searcher"
+        className="double-searcher"
         //   onSubmit={(e)=> e.preventDefault()}
       >
         {/* <h2 className="invent-header">Inventory</h2> */}
