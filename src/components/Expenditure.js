@@ -94,7 +94,7 @@ const Expenditure = () => {
           <button onClick={secondUnit}>unit 2</button>
         </article>
       )}
-      <form className="searcher" onSubmit={(e) => e.preventDefault()}>
+      <form className="double-searcher" onSubmit={(e) => e.preventDefault()}>
         <input
           // id="invent-search"
           type="text"
