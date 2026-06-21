@@ -66,10 +66,10 @@ const PurchaseHistory = () => {
                 {currency}
                 {numberWithCommas(parseFloat(receipt.grandTotal).toFixed(2))}
               </h4>
-              {/* <h2 onClick={() => removeItem(receipt._id)}>
-                <FaTrashAlt role="button" />
-              </h2> */}
             </section>
+            <h2 onClick={() => removeItem(receipt._id)} className="trash">
+              <FaTrashAlt role="button" />
+            </h2>
           </div>
         );
       })}
