@@ -16,6 +16,7 @@ function App() {
     <main className="App">
       <Navbar />
       <div className="grower">
+        <h4 className="app-headline">Iyana Era Project</h4>
         <Routes>
           <Route path="/">
             <Route path="/" index element={<Item />} />

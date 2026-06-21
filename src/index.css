@@ -39,7 +39,7 @@ code {
 
 .grower {
    min-height: 100vh;
-   padding: 4rem 0;
+   padding: 3rem 0 0 0;
 }
 
 .acquire {
@@ -68,6 +68,14 @@ code {
   position: fixed;
   color: white;
   width: 100vw;
+}
+
+.app-headline {
+  text-align: left;
+  /* float: left; */
+  margin-left: .5rem;
+  /* background-color: red; */
+  /* position: absolute; */
 }
 
 .navbar {
@@ -272,15 +280,16 @@ button {
 
 .searcher {
   display: flex;
-  justify-content: center;
-  width: 95%;
+  /* justify-content: center; */
+  width: 80%;
   overflow: auto;
   column-gap: 1rem;
-  margin: 1rem 0 0 0;
+  /* margin: 1rem 0 0 0; */
+  /* justify-content: start; */
+  /* background-color: red; */
 }
 
 .searcher input {
-  /* background-color: red; */
   /* background-color: red; */
   /* font-size: 1.5rem; */
   padding: .2rem .2rem;
