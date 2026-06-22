@@ -355,6 +355,12 @@ button {
   column-gap: 2rem;
 }
 
+.items-header >*:nth-child(3){
+  /* background-color: red; */
+  width: 4rem;;
+  
+}
+
 .usage-items-header {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
