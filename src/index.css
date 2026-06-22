@@ -471,6 +471,9 @@ text-align: left;
 }
 .total-elements >*:nth-child(2){
   grid-column: 7 / 9;
+  /* background-color: red; */
+  width: 8rem;
+  overflow-y: auto;
 }
 .trash{
   margin-top: .2rem;
