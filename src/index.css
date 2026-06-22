@@ -356,8 +356,7 @@ button {
 }
 
 .items-header >*:nth-child(3){
-  /* background-color: red; */
-  width: 4rem;;
+  white-space: nowrap;
   
 }
 
