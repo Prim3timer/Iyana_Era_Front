@@ -35,6 +35,8 @@ export const ItemProvider = ({ children }) => {
   const getReceipts = async () => {
     try {
       const response = await axios.get("/acquisition");
+      // it doesn't have the description property
+      // response.data.shift();
       dispatch({ type: "RECEIPTS", payload: response.data });
     } catch (error) {
       console.log(error);

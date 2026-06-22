@@ -93,6 +93,14 @@ code {
   text-align: right
 }
 
+
+.good-description {
+  /* background-color: red; */
+  max-height: 8rem;
+  width: 10rem;
+  overflow-x: auto
+}
+
 .navbar>* {
   background-color: ;
 }

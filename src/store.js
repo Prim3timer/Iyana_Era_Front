@@ -22,6 +22,7 @@ const initialState = {
   verify: false,
   item: {},
   id: "",
+  showMore: false,
 };
 
 export default initialState;

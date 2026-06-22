@@ -125,6 +125,8 @@ const reducer = (state, action) => {
       return { ...state, item: action.payload };
     case "ID":
       return { ...state, id: action.payload };
+    case "SHOWMORE":
+      return { ...state, showMore: !state.showMore };
     default:
       throw new Error();
   }

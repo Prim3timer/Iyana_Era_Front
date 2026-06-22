@@ -11,6 +11,8 @@ const PurchaseHistory = () => {
     useContext(ItemContext);
   console.log(receipts);
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [readMore, setReadMore] = useState(false);
+  const [fullDesc, setFullDesc] = useState("");
   const iyaId = localStorage.getItem("iyaId");
   const removeItem = async (id) => {
     try {
@@ -50,9 +52,17 @@ const PurchaseHistory = () => {
     dispatch({ type: "ACQUIITEMS", payload: currentItems });
   };
 
+  const showDersciption = (id) => {
+    console.log(id);
+    const currentDesc = receipts.find((item) => item._id === id);
+    setFullDesc(currentDesc?.description);
+    setReadMore(!readMore);
+    dispatch({ type: "SHOWMORE" });
+  };
+
   useEffect(() => {
     getReceipts();
-  }, [removeItem]);
+  }, []);
 
   return (
     <div>
@@ -74,6 +84,7 @@ const PurchaseHistory = () => {
             <hr />
             <section className="good-outer">
               {receipt.goods.map((good) => {
+                console.log(good);
                 return (
                   <div className="goods-container" key={good._id}>
                     <p className="good-name"> {good.name}</p>
@@ -82,7 +93,22 @@ const PurchaseHistory = () => {
                       {good.qty > 1 ? "s" : ""}
                     </p>
                     <p>{numberWithCommas(parseFloat(good.total).toFixed(2))}</p>
-                    <p>{good.description}</p>
+                    <p className="good-description">
+                      {" "}
+                      {readMore
+                        ? good.description
+                        : `${good.description.substring(0, 37)}`}
+                      <span
+                        className="show-more"
+                        onClick={() => showDersciption(good._id)}
+                      >
+                        {readMore
+                          ? " show less"
+                          : good.description.length >= 36
+                            ? "...read more"
+                            : ""}
+                      </span>
+                    </p>
                   </div>
                 );
               })}
@@ -101,6 +127,10 @@ const PurchaseHistory = () => {
           </div>
         );
       })}
+      {/* <div className={state.showMore ? "delete" : "no-delete"}>
+        <p>{fullDesc}</p>
+      </div> */}
+
       <div className={state.verify ? "delete" : "no-delete"}>
         <h3
           id="verify-header"

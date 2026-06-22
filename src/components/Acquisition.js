@@ -17,6 +17,7 @@ const Acquisition = () => {
   const [noShow, setNoShow] = useState(false);
   const [success, setSuccess] = useState(false);
   const [numerator, setNumerator] = useState();
+
   const now = new Date();
 
   const inputRef = useRef();
