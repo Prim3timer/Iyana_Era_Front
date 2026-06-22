@@ -117,11 +117,11 @@ const PurchaseHistory = () => {
             </section>
             <hr className="horizontal" />
             <section className="total-elements">
-              <h4 className="receipts-grand-total">Total Cost:</h4>
-              <h4>
+              <h3 className="receipts-grand-total">Total Cost:</h3>
+              <h3 className="receipts-grand-total">
                 {currency}
                 {numberWithCommas(parseFloat(receipt.grandTotal).toFixed(2))}
-              </h4>
+              </h3>
             </section>
             <h2 onClick={() => asertain(receipt._id)} className="trash">
               <FaTrashAlt role="button" />
