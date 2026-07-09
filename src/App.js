@@ -14,11 +14,16 @@ import Expenditure from "./components/Expenditure";
 import Zip from "./Zip";
 
 function App() {
+  const location = useLocation();
   return (
     <main className="App">
-      <Navbar />
+      {location.pathname === "/zip" ? "" : <Navbar />}
       <div className="grower">
-        <h4 className="app-headline">Iyana Era Project</h4>
+        {location.pathname === "/zip" ? (
+          ""
+        ) : (
+          <h4 className="app-headline">Iyana Era Project</h4>
+        )}
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route path="/" index element={<Item />} />
