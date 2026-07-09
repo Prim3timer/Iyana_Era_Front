@@ -37,6 +37,9 @@ const Navbar = () => {
         <Link to={"/usage-data"} className={"link-cover"}>
           usage data
         </Link>
+        <Link to={"/zip"} className={"link-cover"}>
+          zip
+        </Link>
       </article>
     </div>
   );

@@ -11,6 +11,7 @@ import Usage from "./components/Usage";
 import Used from "./components/Used";
 import UsageData from "./components/UsageData";
 import Expenditure from "./components/Expenditure";
+import Zip from "./Zip";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
             <Route path="used" element={<Used />} />
             <Route path="/usage-data" element={<UsageData />} />
             <Route path="/expenditure" element={<Expenditure />} />
+            <Route path="/zip" element={<Zip />} />
           </Route>
         </Routes>
       </div>

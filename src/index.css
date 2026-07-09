@@ -452,6 +452,22 @@ button {
   text-decoration: underline;
 }
 
+.zip-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  row-gap: 1rem;
+  margin: 1rem 0;
+}
+
+.zip-sub-container {
+  justify-content: center;
+  align-items: center;
+  /* background-color: red; */
+  display: flex;
+  column-gap: .5rem;
+  font-size: 1.5rem;
+}
+
 .receipt-main-cont {
   /* background-color: red; */
 /* display: flex; */
