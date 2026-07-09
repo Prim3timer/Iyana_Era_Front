@@ -468,6 +468,11 @@ button {
   font-size: 1.5rem;
 }
 
+.zip-sub-container h4 {
+  background-color: yellow;
+  padding: .5rem;
+}
+
 .receipt-main-cont {
   /* background-color: red; */
 /* display: flex; */
