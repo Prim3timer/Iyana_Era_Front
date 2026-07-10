@@ -467,7 +467,7 @@ button {
   width: 80vw;
   /* background-color: blue; */
   row-gap: 1rem;
-  margin: 1rem;
+  margin: 2rem 1rem;
 }
 
 .zip-sub-container {
