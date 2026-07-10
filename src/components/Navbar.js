@@ -7,7 +7,7 @@ const Navbar = () => {
   return (
     <div>
       <article className="navbar">
-        <Link className={"link-cover"} to={"/acquisition"}>
+        {/* <Link className={"link-cover"} to={"/acquisition"}>
           acquisition
         </Link>
         <Link to={"/expenditure"} className="link-cover">
@@ -19,9 +19,6 @@ const Navbar = () => {
         <Link to={"/add-item"} className={"link-cover"}>
           add item
         </Link>
-        {/* <Link to={"/edit-item"} className={"link-cover"}>
-            edit item
-          </Link> */}
         <Link to={"/inventory"} className={"link-cover"}>
           inventory
         </Link>
@@ -36,7 +33,7 @@ const Navbar = () => {
         </Link>
         <Link to={"/usage-data"} className={"link-cover"}>
           usage data
-        </Link>
+        </Link> */}
         <Link to={"/zip"} className={"link-cover"}>
           zip
         </Link>

@@ -19,15 +19,13 @@ function App() {
     <main className="App">
       {location.pathname === "/zip" ? "" : <Navbar />}
       <div className="grower">
-        {location.pathname === "/zip" ? (
-          ""
-        ) : (
-          <h4 className="app-headline">Iyana Era Project</h4>
-        )}
+        {/* <h4 className="app-headline">Iyana Era Project</h4> */}
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route path="/" index element={<Item />} />
-            <Route path="/items" index element={<Item />} />
+            <Route path="/zip" element={<Zip />} />
+            <Route path="/zip" index element={<Zip />} />
+            {/* <Route path="/" element={<Item />} /> */}
+            {/* <Route path="/items" element={<Item />} /> */}
             <Route path="/edit-item" element={<EditItem />} />
             <Route path="/add-item" element={<AddItem />} />
             <Route path="inventory" element={<Inventory />} />
@@ -37,7 +35,6 @@ function App() {
             <Route path="used" element={<Used />} />
             <Route path="/usage-data" element={<UsageData />} />
             <Route path="/expenditure" element={<Expenditure />} />
-            <Route path="/zip" element={<Zip />} />
           </Route>
         </Routes>
       </div>
