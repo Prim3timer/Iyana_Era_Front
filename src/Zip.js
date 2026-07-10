@@ -24,38 +24,40 @@ const Zip = () => {
   return (
     <div>
       <h3>WRJ Zips</h3>
-      <article className="zip-container">
-        {withLeadingZeros.map((number, i) => {
-          return (
-            <section key={i} className="zip-sub-container">
-              <p>{i + 1}.</p>
-              <h4>
-                {number == "03609"
-                  ? "05101/03609"
-                  : number == "05350"
-                    ? "05350/52"
-                    : number == "05701"
-                      ? "05701 - 02"
-                      : number == "05735"
-                        ? "05735/49"
-                        : number == "05743"
-                          ? "05743/31"
-                          : number == "05764"
-                            ? "05764/41"
-                            : number == "05778"
-                              ? "05778/52"
-                              : number == "05251"
-                                ? "05251/63"
-                                : number == "05853"
-                                  ? "05853/54"
-                                  : number == "05867"
-                                    ? "05867 ?"
-                                    : number}
-              </h4>
-            </section>
-          );
-        })}
-      </article>
+      <section className="mainest">
+        <article className="zip-container">
+          {withLeadingZeros.map((number, i) => {
+            return (
+              <section key={i} className="zip-sub-container">
+                <p>{i + 1}.</p>
+                <h4>
+                  {number == "03609"
+                    ? "05101/03609"
+                    : number == "05350"
+                      ? "05350/52"
+                      : number == "05701"
+                        ? "05701 - 02"
+                        : number == "05735"
+                          ? "05735/49"
+                          : number == "05743"
+                            ? "05743/31"
+                            : number == "05764"
+                              ? "05764/41"
+                              : number == "05778"
+                                ? "05778/52"
+                                : number == "05251"
+                                  ? "05251/63"
+                                  : number == "05853"
+                                    ? "05853/54"
+                                    : number == "05867"
+                                      ? "05867 ?"
+                                      : number}
+                </h4>
+              </section>
+            );
+          })}
+        </article>
+      </section>
     </div>
   );
 };
