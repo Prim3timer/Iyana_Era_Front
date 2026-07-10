@@ -464,7 +464,7 @@ button {
   column-gap: 1rem;
   justify-content: flex-start;
   /* grid-template-columns: repeat(5, 1fr); */
-  /* width: 80vw; */
+  width: 90vw;
   /* background-color: blue;   */
   row-gap: 1rem;
   margin: 2rem 1rem;
