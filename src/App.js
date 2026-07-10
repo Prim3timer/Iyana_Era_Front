@@ -15,6 +15,7 @@ import Zip from "./Zip";
 
 function App() {
   const location = useLocation();
+  const year = new Date().getFullYear();
   return (
     <main className="App">
       {location.pathname === "/zip" ? "" : <Navbar />}
@@ -38,7 +39,7 @@ function App() {
           </Route>
         </Routes>
       </div>
-      <section className="footer">Amalu Productions</section>
+      <section className="footer">&copy; {year} Amalu Productions</section>
     </main>
   );
 }
