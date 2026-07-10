@@ -453,13 +453,17 @@ button {
 }
 
 .zip-container {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 4rem;
+  justify-content: flex-start;
+  /* grid-template-columns: repeat(5, 1fr); */
   row-gap: 1rem;
   margin: 1rem;
 }
 
 .zip-sub-container {
+  /* background-color: red; */
   justify-content: start;
   align-items: center;
   display: flex;
