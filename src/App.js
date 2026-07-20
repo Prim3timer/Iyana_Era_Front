@@ -23,10 +23,10 @@ function App() {
         {/* <h4 className="app-headline">Iyana Era Project</h4> */}
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route path="/zip" element={<Zip />} />
-            <Route path="/zip" index element={<Zip />} />
-            {/* <Route path="/" element={<Item />} /> */}
-            {/* <Route path="/items" element={<Item />} /> */}
+            {/* <Route path="/zip" element={<Zip />} />
+            <Route path="/zip" index element={<Zip />} /> */}
+            <Route path="/" element={<Item />} />
+            <Route path="/items" element={<Item />} />
             <Route path="/edit-item" element={<EditItem />} />
             <Route path="/add-item" element={<AddItem />} />
             <Route path="inventory" element={<Inventory />} />
